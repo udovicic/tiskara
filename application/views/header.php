@@ -14,13 +14,10 @@
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<script>window.html5 || document.write('<script src="<?= SITE_URL ?>/js/html5shiv.js"><\/script>')</script>
 	<![endif]-->
-	<script src="<?= SITE_URL ?>/js/less-1.4.1.min.js"></script>
 	<script src="<?= SITE_URL ?>/js/jquery-1.10.1.min.js"></script>
 	<script src="<?= SITE_URL ?>/js/bootstrap.min.js"></script>
 	<script src="<?= SITE_URL ?>/js/main.js"></script>
-	<script>
-		less.watch();
-	</script>
+	
 	<title><?= $title ?></title>
 </head>
 <body>

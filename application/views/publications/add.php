@@ -5,7 +5,8 @@
 			<h4 class="modal-title">Dodavanje izdanja</h4>
 		</div> <!-- end modal header -->
 		<div class="modal-body">
-			<form role="form" class="form-horizontal" action="<?= SITE_URL . '/publications/edit/' . $pub['publication_id'] ?>" method="post">
+			<form role="form" class="form-horizontal" action="<?= SITE_URL . '/publications/add/' . $pub['publication_id'] ?>" method="post" name="add">
+				<input type="hidden" name="id" id="id" value="<?= $pub['publication_id'] ?>">
 				<div class="form-group">
 					<label class="col-xs-4 control-label" for="name">Naziv</label>
 					<div class="col-xs-8">
@@ -118,7 +119,7 @@
 		</div><!-- end modal body -->
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
-			<button type="button" class="btn btn-success">Dodaj</button>
+			<button type="button" class="btn btn-success" id="submit">Dodaj</button>
 		</div><!-- end modal footer -->
 	</div> <!-- end modal-content -->
 </div> <!-- end modal-dialog -->
