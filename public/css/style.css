@@ -1,0 +1,18 @@
+@import 'utils.css';
+
+body {
+	padding-top: 100px;
+}
+a {
+	color: black;
+	text-decoration: none;
+}
+table#publications {
+	margin-bottom: 0px;
+}
+table#publications .select {
+	cursor: pointer;
+}
+#logo {
+	color: #61D145;
+}

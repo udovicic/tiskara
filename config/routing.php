@@ -3,8 +3,8 @@
  * Default site routing
  */
 
-$routing_default['controller'] = "";
-$routing_default['action'] = "";
+$routing_default['controller'] = "publications";
+$routing_default['action'] = "listing";
 $routing_default['query'] = array();
 
 /**
