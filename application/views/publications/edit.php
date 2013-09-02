@@ -2,7 +2,7 @@
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title">Dodavanje izdanja</h4>
+			<h4 class="modal-title">Uređivanje izdanja</h4>
 		</div> <!-- end modal header -->
 		<div class="modal-body">
 			<form role="form" class="form-horizontal" action="<?= SITE_URL . '/publications/edit/' . $pub['publication_id'] ?>" method="post">

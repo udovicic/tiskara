@@ -2,7 +2,7 @@
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title">Dodavanje izdanja</h4>
+			<h4 class="modal-title">Brisanje izdanja</h4>
 		</div> <!-- end modal header -->
 		<div class="modal-body">
 			<p>Želite li obrisati <?= $pub['name'] ?>(<?= $pub['num_pages'] ?>)?</p>
