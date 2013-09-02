@@ -5,8 +5,8 @@
 			<h4 class="modal-title">Uređivanje izdanja</h4>
 		</div> <!-- end modal header -->
 		<div class="modal-body">
-			<form role="form" class="form-horizontal" action="<?= SITE_URL . '/publications/edit/' . $pub['publication_id'] ?>" method="post" name="edit">
-				<input type="hidden" name="id" id="id" value="<?= $pub['publication_id'] ?>">
+			<form role="form" class="form-horizontal" action="<?= SITE_URL . '/publications/edit' ?>" method="post" name="edit">
+				<input type="hidden" name="publication_id" id="publication_id" value="<?= $pub['publication_id'] ?>">
 				<div class="form-group">
 					<label class="col-xs-4 control-label" for="name">Naziv</label>
 					<div class="col-xs-8">
@@ -121,5 +121,6 @@
 			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
 			<button type="button" class="btn btn-primary" id="submit">Spremi</button>
 		</div><!-- end modal footer -->
+		<script src="<?= SITE_URL ?>/js/modal.js"></script>
 	</div> <!-- end modal-content -->
 </div> <!-- end modal-dialog -->

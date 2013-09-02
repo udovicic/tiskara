@@ -116,6 +116,22 @@ abstract class SQLQuery {
     }
 
 /**
+ * Delete entry from database
+ *
+ * @param int $id Database row id
+ */
+    function delete($id)
+    {
+        global $inflect;
+        
+        $sql =
+            'DELETE FROM ' . $this->_table .
+            ' WHERE ' . $inflect->singularize($this->_table) . '_id=' . $id;
+
+        return $this->query($sql);
+
+    }
+/**
  * Returns number of rows affected with last query
  *
  * @return int Number of affected rows
