@@ -9,15 +9,15 @@ $(function() {
 		// grab url
 		var url=$(this).attr('href');
 
-		// set content
+		// get url content
 		var dialog = $('#dialog-publication');
 		$.get(url, function(data) {
-			dialog.html(data);
-		});
-		
-		// display modal
-		dialog.modal({
-			show: 'true'
+			//set content
+			dialog.html(data)
+			// display modal
+			dialog.modal({
+				show: 'true'
+			});
 		});
 	});
 
