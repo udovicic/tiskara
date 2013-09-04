@@ -13,7 +13,7 @@ $(function() {
 		var dialog = $('#dialog-publication');
 		$.get(url, function(data) {
 			//set content
-			dialog.html(data)
+			dialog.html(data);
 			// display modal
 			dialog.modal({
 				show: 'true'
@@ -21,12 +21,46 @@ $(function() {
 		});
 	});
 
-	$('.select').click(function() {
-		var parent = $(this).parent();
-		var input = parent.find('input[type=checkbox]');
-		var status = input.is(':checked');
-		
-		parent.toggleClass('success');
-		input.attr('checked', !status);
+	// listing row select
+	$('.select-box').change(function() {
+		var val = $(this).is(':checked');
+		if (val == true) {
+			$(this).parents('tr').addClass('success');
+		} else {
+			$(this).parents('tr').removeClass('success');
+		}
+	});
+
+	// add material
+	$('#material-add').click(function() {
+		// grab elements
+		var form = $('#form-add-material');
+		var dialog = $('#dialog-publication');
+		var print = $('.select-box');
+
+		// prepare post data
+		var data = new Array();
+		print.each(function() {
+			if ($(this).is(':checked') == true) {
+				data.push($(this).attr('value'));
+			}
+		});
+
+		// if none selected, abort
+		if (data.length == 0) {
+			return;
+		}
+
+		// submit data
+		$.post(form.attr('action'), {
+			data: JSON.stringify(data)
+		}).done(function(data) {
+			//set content
+			dialog.html(data);
+			// display modal
+			dialog.modal({
+				show: 'true'
+			});
+		});
 	});
 });

@@ -6,7 +6,7 @@
 		</div> <!-- end modal header -->
 		<div class="modal-body">
 			<p>Želite li obrisati <?= $pub['name'] ?>(<?= $pub['num_pages'] ?>)?</p>
-			<form action="<?= SITE_URL . '/publications/delete' ?>" method="post" name="form-delete">
+			<form action="<?= SITE_URL . '/publications/delete' ?>" method="post" name="form-delete" id="modal-form">
 				<input type="hidden" name="publication_id" id="publication_id" value="<?= $pub['publication_id'] ?>">
 			</form>
 		</div><!-- end modal body -->

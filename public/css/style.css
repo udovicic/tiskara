@@ -10,8 +10,9 @@ a {
 table#publications {
 	margin-bottom: 0px;
 }
-table#publications .select {
+table#publications label {
 	cursor: pointer;
+	font-weight: normal;
 }
 #logo {
 	color: #61D145;

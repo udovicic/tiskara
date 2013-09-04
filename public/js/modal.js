@@ -1,4 +1,3 @@
 $('#submit').click(function() {
-	console.log('trigger');
-	$('form').submit();
+	$('#modal-form').submit();
 });
