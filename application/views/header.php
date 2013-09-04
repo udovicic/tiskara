@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="<?= SITE_URL ?>/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?= SITE_URL ?>/css/style.css">
 
 	<!--[if lt IE 9]>
