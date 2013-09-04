@@ -31,6 +31,12 @@ class Material extends core\Model
  */
 	function log($id, $date)
 	{
+		$date = array('date' => $date);
+
+		// delete previous entry
+		$sql = 'DELETE FROM materials WHERE datestamp=:date';
+		$this->query($sql, $date);
+
 		// keys
 		$materials = array('plate_1', 'plate_2', 'plate_3', 'paper_1', 'paper_1s', 'paper_2', 'paper_2s', 'paper_3', 'paper_3s', 'paper_4', 'paper_4s', 'color_c', 'color_m', 'color_y', 'color_k');
 	// prepare sql for retreiving materials
@@ -50,13 +56,13 @@ class Material extends core\Model
 		$materials = $this->query($sql);
 
 	// prepare results for storing materials
-		$fields = 'INSERT INTO materials (timestamp, ';
+		$fields = 'INSERT INTO materials (datestamp, ';
 		$sql = '';
 		foreach ($materials[0] as $material => $value) {
 			$sql .= $value . ', ';
 			$fields .= $material . ', ';
 		}
 		$sql = substr($fields,0,-2) . ') VALUES (:date, ' . substr($sql,0,-2) . ')';
-		$this->query($sql, array('date' => $date));
+		$this->query($sql, $date);
 	}
 }
