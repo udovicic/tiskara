@@ -38,5 +38,11 @@ class MaterialsController extends Core\Controller
 		// view variables
 		$this->set('publications', $pubs);
 		$this->set('holder', htmlentities($data));
+
+		// grab current datestamp
+		$date = new DateTime();
+		$this->set('week', $date->format('W'));
+		$this->set('month', $date->format('m'));
+		$this->set('year', $date->format('Y'));
 	}
 }

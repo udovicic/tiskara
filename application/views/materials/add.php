@@ -17,15 +17,15 @@
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="week">Tjedan:</label>
 						<div class="col-xs-2">
-							<input type="text" class="form-control" name="week" id="week" autofocus required>
+							<input type="text" class="form-control" name="week" id="week" value="<?= $week ?>" autofocus required>
 						</div>
 						<label class="col-xs-2 control-label" for="month">Mjesec:</label>
 						<div class="col-xs-2">
-							<input type="text" class="form-control" name="month" id="month" required>
+							<input type="text" class="form-control" name="month" id="month" value="<?= $month ?>" required>
 						</div>
 						<label class="col-xs-2 control-label" for="year">Godina:</label>
 						<div class="col-xs-2">
-							<input type="text" class="form-control" name="year" id="year" required>
+							<input type="text" class="form-control" name="year" id="year" value="<?= $year ?>" required>
 						</div>
 					</div>
 			</form>
