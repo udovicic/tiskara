@@ -16,23 +16,19 @@
 					<input type="hidden" name="holder" value="<?= $holder ?>">
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="week">Tjedan:</label>
-						<div class="col-xs-2">
+						<div class="col-xs-4">
 							<input type="text" class="form-control" name="week" id="week" value="<?= $week ?>" autofocus required>
 						</div>
-						<label class="col-xs-2 control-label" for="month">Mjesec:</label>
-						<div class="col-xs-2">
-							<input type="text" class="form-control" name="month" id="month" value="<?= $month ?>" required>
-						</div>
 						<label class="col-xs-2 control-label" for="year">Godina:</label>
-						<div class="col-xs-2">
+						<div class="col-xs-4">
 							<input type="text" class="form-control" name="year" id="year" value="<?= $year ?>" required>
 						</div>
 					</div>
 			</form>
 		</div><!-- end modal body -->
 		<div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
 			<button type="button" class="btn btn-success" id="submit">Prihvati</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
 		</div><!-- end modal footer -->
 		<script src="<?= SITE_URL ?>/js/modal.js"></script>
 	</div> <!-- end modal-content -->

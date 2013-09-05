@@ -42,17 +42,8 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Izvještaj <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li class="dropdown-header">Online pregled</li>
-							<li><a href="<?= SITE_URL . '/materials/view/all' ?>">Ukupna potrošnja</a></li>
-							<li><a href="<?= SITE_URL . '/materials/view/plate' ?>">Potrošnja ploča</a></li>
-							<li><a href="<?= SITE_URL . '/materials/view/paper' ?>">Potrošnja papira</a></li>
-							<li><a href="<?= SITE_URL . '/materials/view/color' ?>">Potrošnja boje</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">PDF</li>
-							<li><a href="<?= SITE_URL . '/materials/print/all' ?>">Ukupna potrošnja</a></li>
-							<li><a href="<?= SITE_URL . '/materials/print/plate' ?>">Potrošnja ploča</a></li>
-							<li><a href="<?= SITE_URL . '/materials/print/paper' ?>">Potrošnja papira</a></li>
-							<li><a href="<?= SITE_URL . '/materials/print/color' ?>">Potrošnja boje</a></li>
+							<li><a href="<?= SITE_URL . '/materials/printable/weekly' ?>">Tjedna potrošnja</a></li>
+							<li><a href="<?= SITE_URL . '/materials/printable/period' ?>">Potrošnja za period</a></li>
 						</ul>
 					</li>
 				</ul>

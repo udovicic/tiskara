@@ -43,7 +43,7 @@ class Material extends core\Model
 		// select sums
 		$sql = 'SELECT ';
 		foreach ($materials as $value) {
-			$sql .= "sum($value) as $value, ";
+			$sql .= "(sum($value) * frequency) as $value, ";
 		}
 
 		// add values
@@ -64,5 +64,54 @@ class Material extends core\Model
 		}
 		$sql = substr($fields,0,-2) . ') VALUES (:date, ' . substr($sql,0,-2) . ')';
 		$this->query($sql, $date);
+	}
+/**
+ * Fetch log entries for requested datestamps
+ *
+ * @param array $weeks List of datestamps
+ */
+	function weekly($weeks)
+	{
+		$results = array();
+		foreach ($weeks as $week => $value) {
+			$sql = 'SELECT * FROM materials WHERE datestamp=:datestamp';
+			$result = $this->query($sql, array('datestamp' => $value));
+			$results[$week] = $result[0];
+		}
+
+		return $results;
+	}
+/**
+ * Fetch log entries for requested datestamps (sums)
+ *
+ * @param array $months List of datestamps
+ */
+	function monthly($months)
+	{
+		// keys
+		$materials = array('plate_1', 'plate_2', 'plate_3', 'paper_1', 'paper_1s', 'paper_2', 'paper_2s', 'paper_3', 'paper_3s', 'paper_4', 'paper_4s', 'color_c', 'color_m', 'color_y', 'color_k');
+		$results = array();
+
+	// prepare sql for retreiving materials
+		// select sums
+		$sql = 'SELECT ';
+		foreach ($materials as $value) {
+			$sql .= "sum($value) as $value, ";
+		}
+
+		// add values
+		$sql = substr($sql, 0, -2) . ' FROM materials WHERE datestamp IN (';
+		foreach ($months as $month => $value) {
+			$sql_t = "'";
+			foreach ($value as $datestamp) {
+				$sql_t .= $datestamp . "', '";
+			}
+			$sql_t = $sql . substr($sql_t, 0, -3) . ')';
+
+			$materials = $this->query($sql_t);
+			$results[$month] = $materials[0];
+		}
+
+		return $results;
 	}
 }
