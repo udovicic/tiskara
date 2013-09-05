@@ -11,6 +11,9 @@ class PublicationsController extends Core\Controller
 	function listing()
 	{
 		$publications = $this->Publication->selectAll();
+		if ($publications == false) {
+			$publications = array();
+		}
 
 		$this->set('title', 'Izlistanje izdanja');
 		$this->set('publications', $publications);
@@ -18,6 +21,8 @@ class PublicationsController extends Core\Controller
 
 /**
  * Edit publication details
+ *
+ * @param int $id Id of publication
  */
 	function edit($id='')
 	{
