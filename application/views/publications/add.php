@@ -1,4 +1,4 @@
-<div class="modal-dialog">
+		<div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -101,8 +101,8 @@
 			</form>
 		</div><!-- end modal body -->
 		<div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
 			<button type="button" class="btn btn-success" id="submit">Dodaj</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
 		</div><!-- end modal footer -->
 		<script src="<?= SITE_URL ?>/js/modal.js"></script>
 	</div> <!-- end modal-content -->

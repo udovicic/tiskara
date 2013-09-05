@@ -102,8 +102,8 @@
 			</form>
 		</div><!-- end modal body -->
 		<div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
 			<button type="button" class="btn btn-primary" id="submit">Spremi</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
 		</div><!-- end modal footer -->
 		<script src="<?= SITE_URL ?>/js/modal.js"></script>
 	</div> <!-- end modal-content -->
