@@ -298,19 +298,26 @@ class PDF extends tFPDF
 		$fill = false;
 		foreach ($monthly as $month => $value) {
 			$this->Cell($w[0], 6, $month, 'LR', 0, 'C', $fill);
-			
 			$this->Cell($w[1], 6, $value['paper_1'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[2], 6, $value['paper_1s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'B', 10);
 			$this->Cell($w[3], 6, $value['paper_1'] + $value['paper_1s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			$this->Cell($w[4], 6, $value['paper_2'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[5], 6, $value['paper_2s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'B', 10);
 			$this->Cell($w[6], 6, $value['paper_2'] + $value['paper_2s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			$this->Cell($w[7], 6, $value['paper_3'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[8], 6, $value['paper_3s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'B', 10);
 			$this->Cell($w[9], 6, $value['paper_3'] + $value['paper_3s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			$this->Cell($w[10], 6, $value['paper_4'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[11], 6, $value['paper_4s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'B', 10);
 			$this->Cell($w[12], 6, $value['paper_4'] + $value['paper_4s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			
 			//new line
 			$this->ln();
@@ -343,16 +350,24 @@ class PDF extends tFPDF
 			
 			$this->Cell($w[1], 6, $value['paper_1'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[2], 6, $value['paper_1s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'BI', 11);
 			$this->Cell($w[3], 6, $value['paper_1'] + $value['paper_1s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			$this->Cell($w[4], 6, $value['paper_2'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[5], 6, $value['paper_2s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'BI', 11);
 			$this->Cell($w[6], 6, $value['paper_2'] + $value['paper_2s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			$this->Cell($w[7], 6, $value['paper_3'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[8], 6, $value['paper_3s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'BI', 11);
 			$this->Cell($w[9], 6, $value['paper_3'] + $value['paper_3s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			$this->Cell($w[10], 6, $value['paper_4'], 'LR', 0, 'C', $fill);
 			$this->Cell($w[11], 6, $value['paper_4s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', 'BI', 11);
 			$this->Cell($w[12], 6, $value['paper_4'] + $value['paper_4s'], 'LR', 0, 'C', $fill);
+			$this->SetFont('DejaVu', '', 10);
 			
 			//new line
 			$this->ln();

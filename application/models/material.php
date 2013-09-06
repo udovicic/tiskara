@@ -73,11 +73,21 @@ class Material extends core\Model
 	function weekly($weeks)
 	{
 		$results = array();
+		$sums = array(
+			'material_id' => 0,'datestamp' =>0,
+			'plate_1' => 0,'plate_2' => 0,'plate_3' => 0,
+			'paper_1' => 0,'paper_1s' => 0,'paper_2' => 0,'paper_2s' => 0,'paper_3' => 0,'paper_3s' => 0,'paper_4' => 0,'paper_4s' => 0,
+			'color_c' => 0,'color_m' => 0,'color_y' => 0,'color_k' => 0);
 		foreach ($weeks as $week => $value) {
 			$sql = 'SELECT * FROM materials WHERE datestamp=:datestamp';
 			$result = $this->query($sql, array('datestamp' => $value));
+			if ($result != false) foreach ($result[0] as $material => $value) {
+				$sums[$material] += $value;
+			}
 			$results[$week] = $result[0];
 		}
+		$results['ukupno'] = $sums;
+		$results['ukupno']['datestamp'] = '';
 
 		return $results;
 	}
@@ -89,14 +99,18 @@ class Material extends core\Model
 	function monthly($months)
 	{
 		// keys
-		$materials = array('plate_1', 'plate_2', 'plate_3', 'paper_1', 'paper_1s', 'paper_2', 'paper_2s', 'paper_3', 'paper_3s', 'paper_4', 'paper_4s', 'color_c', 'color_m', 'color_y', 'color_k');
 		$results = array();
+		$sums = array(
+			'material_id' => 0,'datestamp' =>0,
+			'plate_1' => 0,'plate_2' => 0,'plate_3' => 0,
+			'paper_1' => 0,'paper_1s' => 0,'paper_2' => 0,'paper_2s' => 0,'paper_3' => 0,'paper_3s' => 0,'paper_4' => 0,'paper_4s' => 0,
+			'color_c' => 0,'color_m' => 0,'color_y' => 0,'color_k' => 0);
 
 	// prepare sql for retreiving materials
 		// select sums
 		$sql = 'SELECT ';
-		foreach ($materials as $value) {
-			$sql .= "sum($value) as $value, ";
+		foreach ($sums as $key => $value) {
+			$sql .= "sum($key) as $key, ";
 		}
 
 		// add values
@@ -109,9 +123,12 @@ class Material extends core\Model
 			$sql_t = $sql . substr($sql_t, 0, -3) . ')';
 
 			$materials = $this->query($sql_t);
+			if ($materials != false) foreach ($materials[0] as $material => $value) {
+				$sums[$material] += $value;
+			}
 			$results[$month] = $materials[0];
 		}
-
+		$results['ukupno'] = $sums;
 		return $results;
 	}
 }
