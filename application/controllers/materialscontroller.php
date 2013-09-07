@@ -20,6 +20,11 @@ class MaterialsController extends Core\Controller
 			$holder = json_decode($_POST['holder']);
 			$date = new DateTime();
 			$date->setISODate($_POST['year'], $_POST['week']);
+
+			if ($date->format('W') == '01' && $date->format('m') == '12') {
+				$date->setDate($date->format('Y') + 1, 1, 1);
+				$date->modify('next Thursday');
+			}
 			
 			$date = $date->format('W/m/Y');
 
