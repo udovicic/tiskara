@@ -40,11 +40,11 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-xs-3 control-label" for="paper_1">Papir 84cm/45g</label>
+					<label class="col-xs-3 control-label" for="paper_1">Papir 84cm/42,5g</label>
 					<div class="col-xs-3">
 						<input type="text" class="form-control" name="paper_1" id="paper_1" value="<?= $pub['paper_1'] ?>">
 					</div>
-					<label class="col-xs-3 control-label" for="paper_1s">Papir 42cm/45g</label>
+					<label class="col-xs-3 control-label" for="paper_1s">Papir 42cm/42,5g</label>
 					<div class="col-xs-3">
 						<input type="text" class="form-control" name="paper_1s" id="paper_1s" value="<?= $pub['paper_1s'] ?>">
 					</div>
