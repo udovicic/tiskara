@@ -70,8 +70,8 @@ class MaterialsController extends Core\Controller
 			// get period
 			if ($mode == 2) {
 				try {
-					$start->setISODate($_POST['year-start'], $_POST['week-start']);
-					$end->setISODate($_POST['year-end'], $_POST['week-end']);
+					$start->setISODate($_POST['year-week-start'], $_POST['week-start']);
+					$end->setISODate($_POST['year-week-end'], $_POST['week-end']);
 				} catch (Exceptio $ex) {
 					$mode = 1;
 				}
@@ -97,7 +97,17 @@ class MaterialsController extends Core\Controller
 
 				$tmp->modify('+1 week');
 			}
-			
+
+			if ($mode == 2) {
+				try {
+					$t1 = new DateTime("{$_POST['year-month-start']}-{$_POST['month-start']}-1");
+				$t2 = new DateTime("{$_POST['year-month-end']}-{$_POST['month-end']}-1");
+					$start = clone $t1;
+					$end = clone $t2;
+				} catch (Exceptio $ex) {
+					$mode = 1;
+				}
+			}
 			// requested months
 			$months = array();
 			// alter months period if mode 1
@@ -142,6 +152,7 @@ class MaterialsController extends Core\Controller
 		// grab current datestamp
 		$date = new DateTime();
 		$this->set('week', $date->format('W'));
+		$this->set('month', $date->format('m'));
 		$this->set('year', $date->format('Y'));
 	}
 }
