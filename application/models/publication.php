@@ -65,4 +65,16 @@ class Publication extends Core\Model
 
 		return $data;
 	}
+/**
+ * Get all publications from db, alphabeticaly sorted
+ *
+ * @return array Database output
+ */
+	function getAll()
+	{
+		$sql = "SELECT * FROM {$this->_table} ORDER BY name ASC, num_pages DESC";
+		$result = $this->query($sql);
+
+		return $result;
+	}
 }

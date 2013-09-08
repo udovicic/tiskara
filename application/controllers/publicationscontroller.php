@@ -10,7 +10,7 @@ class PublicationsController extends Core\Controller
  */
 	function listing()
 	{
-		$publications = $this->Publication->selectAll();
+		$publications = $this->Publication->getAll();
 		if ($publications == false) {
 			$publications = array();
 		}
