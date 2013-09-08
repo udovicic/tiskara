@@ -42,6 +42,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Izvještaj <b class="caret"></b></a>
 						<ul class="dropdown-menu">
+							<li><a href="<?= SITE_URL . '/materials/publications/' ?>">Pregled tiskanih izdanja</a></li>
 							<li><a href="<?= SITE_URL . '/materials/printable/weekly' ?>">Tjedna potrošnja</a></li>
 							<li><a href="<?= SITE_URL . '/materials/printable/period' ?>">Potrošnja za period</a></li>
 						</ul>

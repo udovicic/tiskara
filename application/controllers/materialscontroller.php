@@ -157,7 +157,68 @@ class MaterialsController extends Core\Controller
 		// grab current datestamp
 		$date = new DateTime();
 		$this->set('week', $date->format('W'));
-		$this->set('month', $date->format('m'));
 		$this->set('year', $date->format('Y'));
+	}
+
+/**
+ * List names of printed publications for period
+ */
+	function publications()
+	{
+		$this->set('mode', 'select');
+
+		// list publications
+		if (isset($_POST['week-start']) == true) {
+			$this->set('mode', 'list');
+			$weekly = false;
+			$start = new DateTime();
+			$end = new DateTime();
+
+			try {
+				// get dates
+				$start->setISODate($_POST['year-start'], $_POST['week-start']);
+				$end->setISODate($_POST['year-end'], $_POST['week-end']);
+
+				// requested weeks
+				$weeks = array();
+				$tmp = clone $start;
+				while ($tmp <= $end) {
+					if ($tmp->format('W') == '01' && $tmp->format('m') == '12') {
+						$tmp->setDate($tmp->format('Y') + 1, 1, 1);
+						$end->modify('+1 week');
+					}
+					$weeks[$tmp->format('W/Y')] = $tmp->format('W/m/Y');
+
+					$tmp->modify('+1 week');
+				}
+
+				// grab data from db
+				$weekly = $this->Material->weekly($weeks);
+				$this->set('weekly', $weekly);
+			} catch(Exception $ex) {
+				$this->set('notify', 'Pogreška u obradi datuma');
+			}
+		}
+
+		// grab current datestamp
+		$date = new DateTime();
+		$this->set('title', 'Lista tiskanih izadnja');
+		$this->set('week', $date->format('W'));
+		$this->set('year', $date->format('Y'));
+	}
+/**
+ * Delete log entry from database
+ *
+ * @param string $id Loeg entry database id
+ */
+	function delete($id = '')
+	{
+		$this->renderPage = false;
+
+		if ($id != '') {
+			$this->Material->delete($id);
+		}
+
+		header('location:' . SITE_URL . '/materials/publications');
 	}
 }

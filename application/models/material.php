@@ -31,11 +31,24 @@ class Material extends core\Model
  */
 	function log($id, $date)
 	{
-		$date = array('date' => $date);
+		$arg = array('date' => $date);
 
 		// delete previous entry
 		$sql = 'DELETE FROM materials WHERE datestamp=:date';
-		$this->query($sql, $date);
+		$this->query($sql, $arg);
+
+		// get publication names
+		$sql = 'SELECT name, num_pages FROM publications WHERE publication_id IN (';
+		foreach ($id as $i) {
+			$sql .= $i .', ';
+		}
+		$sql = substr($sql,0,-2) . ')';	
+		$pubs = $this->query($sql);
+		$names = '';
+		foreach ($pubs as $pub) {
+			$names .= "{$pub['name']}({$pub['num_pages']}), ";
+		}
+		$arg['publications'] = substr($names, 0, -2);
 
 		// keys
 		$materials = array('plate_1', 'plate_2', 'plate_3', 'paper_1', 'paper_1s', 'paper_2', 'paper_2s', 'paper_3', 'paper_3s', 'paper_4', 'paper_4s', 'color_c', 'color_m', 'color_y', 'color_k');
@@ -56,14 +69,14 @@ class Material extends core\Model
 		$materials = $this->query($sql);
 
 	// prepare results for storing materials
-		$fields = 'INSERT INTO materials (datestamp, ';
+		$fields = 'INSERT INTO materials (datestamp, publications, ';
 		$sql = '';
 		foreach ($materials[0] as $material => $value) {
 			$sql .= $value . ', ';
 			$fields .= $material . ', ';
 		}
-		$sql = substr($fields,0,-2) . ') VALUES (:date, ' . substr($sql,0,-2) . ')';
-		$this->query($sql, $date);
+		$sql = substr($fields,0,-2) . ') VALUES (:date, :publications, ' . substr($sql,0,-2) . ')';
+		$this->query($sql, $arg);
 	}
 /**
  * Fetch log entries for requested datestamps
@@ -74,7 +87,7 @@ class Material extends core\Model
 	{
 		$results = array();
 		$sums = array(
-			'material_id' => 0,'datestamp' =>0,
+			'material_id' => 0,'datestamp' =>0, 'publications' =>0,
 			'plate_1' => 0,'plate_2' => 0,'plate_3' => 0,
 			'paper_1' => 0,'paper_1s' => 0,'paper_2' => 0,'paper_2s' => 0,'paper_3' => 0,'paper_3s' => 0,'paper_4' => 0,'paper_4s' => 0,
 			'color_c' => 0,'color_m' => 0,'color_y' => 0,'color_k' => 0);
