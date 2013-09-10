@@ -56,7 +56,7 @@ class Material extends core\Model
 		// select sums
 		$sql = 'SELECT ';
 		foreach ($materials as $value) {
-			$sql .= "(sum($value) * frequency) as $value, ";
+			$sql .= "sum($value * frequency) as $value, ";
 		}
 
 		// add values
